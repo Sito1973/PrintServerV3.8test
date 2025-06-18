@@ -1,4 +1,15 @@
 import type { Express, Request, Response } from "express";
+
+// Health check endpoint for Docker
+function setupHealthCheck(app: Express) {
+  app.get('/api/health', (_req, res) => {
+    res.status(200).json({ 
+      status: 'ok', 
+      timestamp: new Date().toISOString(),
+      uptime: process.uptime()
+    });
+  });
+}
 import { createServer, type Server } from "http";
 import { storage } from "./storage";
 import { 
