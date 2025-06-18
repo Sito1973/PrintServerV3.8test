@@ -69,7 +69,7 @@ EXPOSE 5000
 
 # Healthcheck
 HEALTHCHECK --interval=30s --timeout=10s --start-period=40s --retries=3 \
-  CMD curl -f http://localhost:5000/api/health || exit 1
+  CMD curl -f http://localhost:3000/api/health || exit 1
 
 # Script de inicio
 RUN echo '#!/bin/sh\n\
