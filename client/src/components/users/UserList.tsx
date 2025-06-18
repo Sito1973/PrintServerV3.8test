@@ -385,7 +385,8 @@ const UserList: React.FC = () => {
 
       {/* Users table */}
       <div className="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
-        <table className="min-w-full divide-y divide-gray-200">
+        <div className="overflow-x-auto">
+          <table className="min-w-full divide-y divide-gray-200">
           <thead className="bg-gray-50">
             <tr>
               <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
@@ -406,8 +407,8 @@ const UserList: React.FC = () => {
               <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                 API Key
               </th>
-              <th className="relative px-6 py-3">
-                <span className="sr-only">Acciones</span>
+              <th className="relative px-6 py-3 min-w-[140px]">
+                <span className="text-xs font-medium text-gray-500 uppercase tracking-wider">Acciones</span>
               </th>
             </tr>
           </thead>
@@ -476,32 +477,37 @@ const UserList: React.FC = () => {
                     </div>
                   </td>
 
-                  <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium space-x-2">
-                    <Button
-                      variant="ghost"
-                      size="sm"
-                      className="text-primary-600 hover:text-primary-900 mr-2"
-                      onClick={() => openEditDialog(user)}
-                    >
-                      Editar
-                    </Button>
-                    <Button
-                      variant="ghost"
-                      size="sm"
-                      className="text-red-600 hover:text-red-900"
-                      onClick={() => {
-                        setSelectedUser(user);
-                        setConfirmDelete(true);
-                      }}
-                    >
-                      Eliminar
-                    </Button>
+                  <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium min-w-[140px]">
+                    <div className="flex items-center justify-end space-x-2">
+                      <Button
+                        variant="ghost"
+                        size="sm"
+                        className="text-blue-600 hover:text-blue-900 hover:bg-blue-50"
+                        onClick={() => openEditDialog(user)}
+                      >
+                        <Edit className="h-4 w-4 mr-1" />
+                        Editar
+                      </Button>
+                      <Button
+                        variant="ghost"
+                        size="sm"
+                        className="text-red-600 hover:text-red-900 hover:bg-red-50"
+                        onClick={() => {
+                          setSelectedUser(user);
+                          setConfirmDelete(true);
+                        }}
+                      >
+                        <Trash2 className="h-4 w-4 mr-1" />
+                        Eliminar
+                      </Button>
+                    </div>
                   </td>
                 </tr>
               ))
             )}
           </tbody>
         </table>
+        </div>
       </div>
 
       {/* Delete Confirmation Dialog */}
